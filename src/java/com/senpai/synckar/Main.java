@@ -14,9 +14,20 @@ public class Main {
 
         cliHandler cli = new cliHandler(args);
 
+        if(cli.hasUnknowns()){
+            cli.printUnknowns();
+            return;
+        }
+
         String source = cli.get("source");
         String target = cli.get("target");
         boolean dryRun = cli.hasflag("dryrun");
+
+        if(source == null || target == null){
+            System.out.println("Required arguments missing");
+            return;
+        }
+
 
     }
 }
