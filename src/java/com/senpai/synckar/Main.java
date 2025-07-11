@@ -28,6 +28,8 @@ public class Main {
             return;
         }
 
+        SyncManager manager = new SyncManager(source, target, dryRun);
+        if(!manager.Valid()) return;
 
     }
 }
