@@ -1,6 +1,7 @@
 package com.senpai.synckar;
 
 import com.senpai.synckar.cli.cliHandler;
+import com.senpai.synckar.core.SyncManager;
 
 public class Main {
 

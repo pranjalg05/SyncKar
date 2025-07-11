@@ -1,4 +1,4 @@
-package com.senpai.synckar;
+package com.senpai.synckar.core;
 
 import java.nio.file.*;
 
