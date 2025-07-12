@@ -19,6 +19,10 @@
   
 ---
 
+## Usage
+
+<pre> ```bash $ java -jar SyncKar-1.0.0-shaded.jar --source src --target target [--dryrun] ``` </pre>
+
 ## Future Ideas
 
 - GUI support using JavaFx
