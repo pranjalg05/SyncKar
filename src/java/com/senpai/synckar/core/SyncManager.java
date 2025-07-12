@@ -22,6 +22,23 @@ public class SyncManager {
         this.dryRun = isDryRun;
     }
 
+    public boolean Sanity(){
+        var absSource = sourceDir.toAbsolutePath().normalize();
+        var absTarget = targetDir.toAbsolutePath().normalize();
+
+        var sane = true;
+
+        if(absSource.startsWith(absTarget)){
+            System.err.println("Source is inside Target - this is not allowed");
+            sane = false;
+        }
+        if(absTarget.startsWith(absSource)){
+            System.err.println("Target is inside Source - this is not allowed");
+            sane = false;
+        }
+        return sane;
+    }
+
     public boolean Valid() {
 
         boolean isValid = true;

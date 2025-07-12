@@ -30,6 +30,7 @@ public class Main {
         }
 
         SyncManager manager = new SyncManager(source, target, dryRun);
+        if(!manager.Sanity()) return;
         if(!manager.Valid()) return;
         manager.start();
 
