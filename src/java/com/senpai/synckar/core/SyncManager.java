@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.annotation.RetentionPolicy;
 import java.nio.file.*;
 import java.sql.SQLOutput;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class SyncManager {
@@ -48,6 +49,7 @@ public class SyncManager {
         System.out.println((dryRun ? "[Dry Run] " : "") + "Syncing files from " + sourceDir + " to " + targetDir);
         this.actionMap = FileComparator.compare(sourceDir, targetDir);
         SyncIt();
+        clear();
     }
 
     private void SyncIt(){
@@ -66,6 +68,7 @@ public class SyncManager {
                             System.out.println("Would copy " + srcPath + " ➜ " + targetDir);
                         } else {
                             Files.createDirectories(tarPath.getParent());
+                            System.out.println("Copying " + srcPath + " ➜ " + tarPath);
                             Files.copy(srcPath, tarPath, StandardCopyOption.REPLACE_EXISTING);
                         }
                         break;
@@ -74,6 +77,7 @@ public class SyncManager {
                         if (dryRun) {
                             System.out.println("Would delete " + tarPath);
                         } else {
+                            System.out.println("Deleting " + tarPath);
                             Files.deleteIfExists(tarPath);
                         }
                     }
@@ -82,6 +86,28 @@ public class SyncManager {
             } catch (Exception e) {
                 System.out.println("Error Modifying " + tarPath);
             }
+        }
+    }
+
+    private void clear(){
+        try {
+            Files.walk(targetDir)
+                    .sorted(Comparator.reverseOrder())
+                    .filter(Files::isDirectory)
+                    .forEach(
+                            path -> {
+                                try {
+                                    if(Files.list(path).findAny().isEmpty()) {
+                                        System.out.println("Deleting [EMPTY FOLDER] " + path);
+                                        Files.delete(path);
+                                    }
+                                } catch (IOException e){
+                                    System.out.println("Couldn't delete folder: " + path + " - " + e.getMessage());
+                                }
+                            }
+                    );
+        } catch (IOException e) {
+            System.out.println("Error clearing empty folders " + e.getMessage());
         }
     }
 
