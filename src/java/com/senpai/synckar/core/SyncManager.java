@@ -9,7 +9,7 @@ public class SyncManager {
     private final Path targetDir;
     private final boolean dryRun;
 
-    enum ActionType {COPY, DELETE, SKIP, MODIFY};
+    enum ActionType {COPY, DELETE, SKIP, MODIFY}
 
     public SyncManager(String source, String target, boolean isDryRun) {
         this.sourceDir = Paths.get(source);
@@ -18,25 +18,30 @@ public class SyncManager {
     }
 
     public boolean Valid() {
-        if (Files.notExists(sourceDir) || Files.notExists(targetDir)) {
-            if (Files.notExists(sourceDir))
-                System.out.println("Invalid source path");
-            if (Files.notExists(targetDir))
-                System.out.println("Invalid target path");
-            return false;
+
+        boolean isValid = true;
+
+        if (!Files.exists(sourceDir)) {
+            System.out.println("Source path is not a directory");
+            isValid = false;
+        } else if (!Files.isDirectory(sourceDir)) {
+            System.out.println("Source path is not a directory");
+            isValid = false;
         }
-        if (!Files.isDirectory(sourceDir)||!Files.isDirectory(targetDir)){
-            if (!Files.isDirectory(sourceDir))
-                System.out.println("Source path is not a directory");
-            if (!Files.isDirectory(targetDir))
-                System.out.println("Target path is not a directory");
-            return false;
+
+        if (!Files.exists(targetDir)) {
+            System.out.println("Target path is not a directory");
+            isValid = false;
+        } else if (!Files.isDirectory(targetDir)) {
+            System.out.println("Target path is not a directory");
+            isValid = false;
         }
-        return true;
+
+        return isValid;
     }
 
-    public void start(){
-        System.out.println(dryRun? "[Dry Run]":"" + " Syncing files from " + sourceDir + " to " + targetDir );
+    public void start() {
+        System.out.println(dryRun ? "[Dry Run]" : "" + " Syncing files from " + sourceDir + " to " + targetDir);
         HashMap<Path, ActionType> actionMap = FileComparator.compare(sourceDir, targetDir);
     }
 

@@ -11,7 +11,9 @@ public class FileComparator {
 
     public static HashMap<Path, SyncManager.ActionType> compare(Path source, Path target){
         HashMap<Path, SyncManager.ActionType> resultMap = new HashMap<>();
+
         try{
+
             Files.walk(source).filter(Files::isRegularFile).forEach(
                     srcFile -> {
                         try{
@@ -38,11 +40,7 @@ public class FileComparator {
                         }
                     }
             );
-        } catch (IOException e) {
-            System.err.println("Error walking source directory! " + e.getMessage());
-        }
 
-        try{
             Files.walk(target).filter(Files::isRegularFile).forEach(
                     targetFile -> {
                         try {
@@ -55,9 +53,11 @@ public class FileComparator {
                         }
                     }
             );
+
         } catch (IOException e){
-            System.err.println("Error walking target directory! " + e.getMessage());
+            System.err.println("Error walking directories " + e.getMessage());
         }
+
         return resultMap;
     }
 }
