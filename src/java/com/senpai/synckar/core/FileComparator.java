@@ -37,7 +37,7 @@ public class FileComparator {
                                     System.out.println("[MODIFIED] " + targetFile);
                                 }
                             }
-                            resultMap.put(srcFile, action);
+                            resultMap.put(relativePath, action);
                         } catch (Exception e) {
                             System.err.println("Error processing: " + srcFile + e.getMessage());
                         }

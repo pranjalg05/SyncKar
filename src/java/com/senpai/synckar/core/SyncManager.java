@@ -65,6 +65,7 @@ public class SyncManager {
                         if (dryRun) {
                             System.out.println("Would copy " + srcPath + " ➜ " + targetDir);
                         } else {
+                            Files.createDirectories(tarPath.getParent());
                             Files.copy(srcPath, tarPath, StandardCopyOption.REPLACE_EXISTING);
                         }
                         break;
@@ -79,7 +80,7 @@ public class SyncManager {
                     default:
                 }
             } catch (Exception e) {
-                System.out.println("Error Modifying " + tarPath + " " + e.getMessage());
+                System.out.println("Error Modifying " + tarPath);
             }
         }
     }
