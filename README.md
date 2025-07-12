@@ -1,4 +1,4 @@
-#  SyncKar (WIP)
+#  SyncKar
 
 [![Java](https://img.shields.io/badge/Java-Temurin%2023-blue)](https://adoptium.net/en-GB/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
