@@ -1,4 +1,4 @@
-#  SyncKar
+#  SyncKar (1.0.0)
 
 [![Java](https://img.shields.io/badge/Java-Temurin%2023-blue)](https://adoptium.net/en-GB/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -21,7 +21,9 @@
 
 ## Usage
 
-<pre> ```bash $ java -jar SyncKar-1.0.0-shaded.jar --source src --target target [--dryrun] ``` </pre>
+```  
+java -jar SyncKar-1.0.0-shaded.jar --source src --target target [--dryrun]
+  ```
 
 ## Future Ideas
 
