@@ -8,7 +8,7 @@ public class test  {
         Path src = Paths.get("src/test/resources/source");
         Path dest = Paths.get("src/test/resources/target");
         try {
-            var list = Files.walk(src).filter()
+            var list = Files.walk(src).toList();
             for(Path p: list){
                 p = src.relativize(p);
                 System.out.println(p);

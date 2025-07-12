@@ -31,6 +31,7 @@ public class Main {
 
         SyncManager manager = new SyncManager(source, target, dryRun);
         if(!manager.Valid()) return;
+        manager.start();
 
     }
 }

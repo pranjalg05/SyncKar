@@ -22,6 +22,7 @@ public class FileComparator {
                             SyncManager.ActionType action = SyncManager.ActionType.SKIP;
                             if(!Files.exists(targetFile)){
                                 action = SyncManager.ActionType.COPY;
+                                System.out.println("[NEW] " + srcFile);
                             }
                             else{
 
@@ -31,8 +32,10 @@ public class FileComparator {
                                 FileTime srcTime = Files.getLastModifiedTime(srcFile);
                                 FileTime targetTime = Files.getLastModifiedTime(targetFile);
 
-                                if(srcSize!=targetSize||!srcTime.equals(targetTime))
+                                if(srcSize!=targetSize||!srcTime.equals(targetTime)) {
                                     action = SyncManager.ActionType.MODIFY;
+                                    System.out.println("[MODIFIED] " + targetFile);
+                                }
                             }
                             resultMap.put(srcFile, action);
                         } catch (Exception e) {
@@ -46,8 +49,10 @@ public class FileComparator {
                         try {
                             Path relative = target.relativize(targetFile);
                             Path src = source.resolve(relative);
-                            if(!Files.exists(src))
+                            if(!Files.exists(src)) {
                                 resultMap.put(relative, SyncManager.ActionType.DELETE);
+                                System.out.println("[ADDITIONAL] " + targetFile);
+                            }
                         } catch (Exception e){
                             System.err.println("Error processing: " + targetFile + e.getMessage());
                         }
