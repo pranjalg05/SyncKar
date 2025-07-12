@@ -1,4 +1,4 @@
-package com.senpai.synckar.cli;
+package com.pranjal.synckar.cli;
 
 import java.util.HashMap;
 import java.util.HashSet;

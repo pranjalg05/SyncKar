@@ -1,9 +1,7 @@
-package com.senpai.synckar.core;
+package com.pranjal.synckar.core;
 
 import java.io.IOException;
-import java.lang.annotation.RetentionPolicy;
 import java.nio.file.*;
-import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.HashMap;
 

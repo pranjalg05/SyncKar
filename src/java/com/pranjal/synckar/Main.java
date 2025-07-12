@@ -1,7 +1,7 @@
-package com.senpai.synckar;
+package com.pranjal.synckar;
 
-import com.senpai.synckar.cli.cliHandler;
-import com.senpai.synckar.core.SyncManager;
+import com.pranjal.synckar.cli.cliHandler;
+import com.pranjal.synckar.core.SyncManager;
 
 public class Main {
 
