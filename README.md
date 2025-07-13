@@ -21,9 +21,17 @@
 
 ## Usage
 
-```  
-java -jar SyncKar-1.0.0-shaded.jar --source src --target target [--dryrun]
-  ```
+1. Download the latest release from the [Releases](https://github.com/pranjalg05/SyncKar/releases) section.
+2. Run the app:
+   
+3. Provide the arguements directly
+   
+```   java -jar SyncKar.jar --source /path/to/source --target /path/to/target --dryrun   ```
+   
+5. Or use config.json
+   
+```   java -jar SyncKar.jar --config path/to/config.json   ```
+   
 
 ## Future Ideas
 
