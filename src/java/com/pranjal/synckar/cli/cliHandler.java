@@ -37,7 +37,7 @@ public class cliHandler {
                 case "--config":{
                     if(i+1<args.length){
                         var x = ConfigParser.parse(args[i+1]);
-                        if(x.get("dryrun").equals(true))
+                        if(x.get("dryrun").equals("true"))
                             flags.add("dryrun");
                         map.put("source", x.getOrDefault("source", ""));
                         map.put("target", x.getOrDefault("target", ""));

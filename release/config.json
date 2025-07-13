@@ -1,5 +1,5 @@
 {
-  "source": "*source path*",
-  "target": "*target path*",
+  "source": "src/test/resources/source",
+  "target": "src/test/resources/target",
   "dryrun": true
 }

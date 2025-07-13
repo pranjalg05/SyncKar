@@ -30,7 +30,7 @@ public class ConfigParser {
                 if(rawValue.startsWith("\""))
                     val = rawValue.replaceAll("^\"|\"$", "");
                 else{
-                    val = rawValue;
+                    val = rawValue.trim();
                 }
 
                 map.put(key, val);
