@@ -1,4 +1,4 @@
-package com.pranjal.synckar.core;
+package core;
 
 import java.io.IOException;
 import java.nio.file.Files;
