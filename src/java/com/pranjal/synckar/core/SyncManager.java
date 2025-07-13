@@ -63,11 +63,11 @@ public class SyncManager {
     public void start() {
         System.out.println((dryRun ? "[Dry Run] " : "") + "Syncing files from " + sourceDir + " to " + targetDir);
         this.actionMap = FileComparator.compare(sourceDir, targetDir);
-        SyncIt();
+        Sync();
         clear();
     }
 
-    private void SyncIt(){
+    private void Sync(){
         for(var Entry: actionMap.entrySet()){
             var relPath = Entry.getKey();
             var task = Entry.getValue();
