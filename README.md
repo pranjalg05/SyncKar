@@ -26,11 +26,15 @@
    
 3. Provide the arguements directly
    
-```   java -jar SyncKar.jar --source /path/to/source --target /path/to/target --dryrun   ```
+```bash
+java -jar SyncKar.jar --source /path/to/source --target /path/to/target --dryrun
+```
    
 5. Or use config.json
    
-```   java -jar SyncKar.jar --config path/to/config.json   ```
+```bash
+java -jar SyncKar.jar --config path/to/config.json
+```
    
 
 ## Future Ideas
